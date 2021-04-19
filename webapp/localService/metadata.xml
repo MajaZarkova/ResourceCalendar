@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:Reference
+		Uri="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZCALENDAR_SRV_01" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="ZC_APPOINTMENTType" sap:label="Consumption view for appointments" sap:content-version="1">
+				<Key><PropertyRef Name="appointment_id"/></Key><Property Name="appointment_id" Type="Edm.Int64" Nullable="false" sap:label="Appointment ID"/><Property Name="user_id" Type="Edm.Int64" sap:label="User ID" sap:value-list="standard"/><Property Name="title" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Appointment title"/><Property Name="start_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/><Property Name="end_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/><Property Name="start_time" Type="Edm.Time" Precision="0" sap:label="Start Time"/><Property Name="end_time" Type="Edm.Time" Precision="0" sap:label="End Time"/><Property Name="info" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Appointment info"/><Property Name="type" Type="Edm.String" MaxLength="30" sap:label="Type of appointment"/><Property Name="tentative" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Tentative"
+					sap:quickinfo="Data Element for Tentative field in Planning Calendar"/><Property Name="crea_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="crea_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><Property Name="lchg_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="lchg_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><NavigationProperty Name="to_projects" Relationship="ZCALENDAR_SRV_01.assoc_0F91264A154A6EAD1B5200816F85D9F7"
+					FromRole="FromRole_assoc_0F91264A154A6EAD1B5200816F85D9F7" ToRole="ToRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"/><NavigationProperty Name="to_employees" Relationship="ZCALENDAR_SRV_01.assoc_049D6D3CFA56C8AAC43028792D5BEBD3"
+					FromRole="ToRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3" ToRole="FromRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"/></EntityType>
+			<EntityType Name="ZC_EMPLOYEEType" sap:label="Consumption view for employees" sap:content-version="1">
+				<Key><PropertyRef Name="user_id"/></Key><Property Name="user_id" Type="Edm.Int64" Nullable="false" sap:label="User ID"/><Property Name="username" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Username"/><Property Name="name" Type="Edm.String" MaxLength="50" sap:label="Name"/><Property Name="role" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Role"/><Property Name="crea_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="crea_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><Property Name="lchg_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="lchg_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><NavigationProperty Name="to_appointments" Relationship="ZCALENDAR_SRV_01.assoc_049D6D3CFA56C8AAC43028792D5BEBD3"
+					FromRole="FromRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3" ToRole="ToRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"/><NavigationProperty Name="to_images" Relationship="ZCALENDAR_SRV_01.assoc_1B278F01ADA80A7BF6465E8D9569DBC3"
+					FromRole="FromRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3" ToRole="ToRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"/></EntityType>
+			<EntityType Name="ZC_IMAGEType" sap:label="Consumption view for images" sap:content-version="1">
+				<Key><PropertyRef Name="zphoto_id"/></Key><Property Name="zphoto_id" Type="Edm.Int64" Nullable="false" sap:label="Photo ID"/><Property Name="user_id" Type="Edm.Int64" sap:label="User ID" sap:value-list="standard"/><Property Name="content" Type="Edm.Binary" sap:label="Binary String" sap:quickinfo="XString"/><Property Name="mimetype" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Character 100"/><Property Name="crea_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="crea_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><Property Name="lchg_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="lchg_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><NavigationProperty Name="to_employees" Relationship="ZCALENDAR_SRV_01.assoc_1B278F01ADA80A7BF6465E8D9569DBC3"
+					FromRole="ToRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3" ToRole="FromRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"/></EntityType>
+			<EntityType Name="ZC_PROJECTType" sap:label="Consumption view for projects" sap:content-version="1">
+				<Key><PropertyRef Name="project_id"/></Key><Property Name="project_id" Type="Edm.Int64" Nullable="false" sap:label="Project ID"/><Property Name="user_id" Type="Edm.Int64" sap:label="User ID" sap:value-list="standard"/><Property Name="appointment_id" Type="Edm.Int64" sap:label="Appointment ID" sap:value-list="standard"/><Property Name="project_name" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="Project Name"/><Property Name="start_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Start Date"/><Property Name="end_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date"/><Property Name="occupied_time" Type="Edm.Decimal" Precision="12" Scale="2" sap:label="Occupied Time"/><Property Name="project_owner" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Project Owner"/><Property Name="crea_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="crea_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><Property Name="lchg_date_time" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp"
+					sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"/><Property Name="lchg_uname" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><NavigationProperty Name="to_appointments" Relationship="ZCALENDAR_SRV_01.assoc_0F91264A154A6EAD1B5200816F85D9F7"
+					FromRole="ToRole_assoc_0F91264A154A6EAD1B5200816F85D9F7" ToRole="FromRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"/><NavigationProperty Name="to_employees" Relationship="ZCALENDAR_SRV_01.assoc_7598E3D00D12455AB83DB56AF384C58D"
+					FromRole="FromRole_assoc_7598E3D00D12455AB83DB56AF384C58D" ToRole="ToRole_assoc_7598E3D00D12455AB83DB56AF384C58D"/></EntityType>
+			<Association Name="assoc_7598E3D00D12455AB83DB56AF384C58D" sap:content-version="1"><End Type="ZCALENDAR_SRV_01.ZC_PROJECTType" Multiplicity="1" Role="FromRole_assoc_7598E3D00D12455AB83DB56AF384C58D"/><End Type="ZCALENDAR_SRV_01.ZC_EMPLOYEEType" Multiplicity="1" Role="ToRole_assoc_7598E3D00D12455AB83DB56AF384C58D"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_7598E3D00D12455AB83DB56AF384C58D"><PropertyRef Name="user_id"/></Principal>
+					<Dependent Role="FromRole_assoc_7598E3D00D12455AB83DB56AF384C58D"><PropertyRef Name="user_id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_0F91264A154A6EAD1B5200816F85D9F7" sap:content-version="1">
+				<End Type="ZCALENDAR_SRV_01.ZC_APPOINTMENTType" Multiplicity="1" Role="FromRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"><OnDelete Action="Cascade"/></End><End Type="ZCALENDAR_SRV_01.ZC_PROJECTType" Multiplicity="*" Role="ToRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"><PropertyRef Name="appointment_id"/></Principal>
+					<Dependent Role="ToRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"><PropertyRef Name="appointment_id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_049D6D3CFA56C8AAC43028792D5BEBD3" sap:content-version="1">
+				<End Type="ZCALENDAR_SRV_01.ZC_EMPLOYEEType" Multiplicity="1" Role="FromRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"><OnDelete Action="Cascade"/></End><End Type="ZCALENDAR_SRV_01.ZC_APPOINTMENTType" Multiplicity="*" Role="ToRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"><PropertyRef Name="user_id"/></Principal>
+					<Dependent Role="ToRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"><PropertyRef Name="user_id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_1B278F01ADA80A7BF6465E8D9569DBC3" sap:content-version="1">
+				<End Type="ZCALENDAR_SRV_01.ZC_EMPLOYEEType" Multiplicity="1" Role="FromRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"><OnDelete Action="Cascade"/></End><End Type="ZCALENDAR_SRV_01.ZC_IMAGEType" Multiplicity="*" Role="ToRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"><PropertyRef Name="user_id"/></Principal>
+					<Dependent Role="ToRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"><PropertyRef Name="user_id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZCALENDAR_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="ZC_APPOINTMENT" EntityType="ZCALENDAR_SRV_01.ZC_APPOINTMENTType" sap:content-version="1"/><EntitySet Name="ZC_EMPLOYEE" EntityType="ZCALENDAR_SRV_01.ZC_EMPLOYEEType" sap:content-version="1"/><EntitySet Name="ZC_IMAGE" EntityType="ZCALENDAR_SRV_01.ZC_IMAGEType" sap:content-version="1"/><EntitySet Name="ZC_PROJECT" EntityType="ZCALENDAR_SRV_01.ZC_PROJECTType" sap:content-version="1"/>
+				<AssociationSet Name="assoc_0F91264A154A6EAD1B5200816F85D9F7" Association="ZCALENDAR_SRV_01.assoc_0F91264A154A6EAD1B5200816F85D9F7"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_APPOINTMENT" Role="FromRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"/><End EntitySet="ZC_PROJECT" Role="ToRole_assoc_0F91264A154A6EAD1B5200816F85D9F7"/></AssociationSet>
+				<AssociationSet Name="assoc_7598E3D00D12455AB83DB56AF384C58D" Association="ZCALENDAR_SRV_01.assoc_7598E3D00D12455AB83DB56AF384C58D"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_PROJECT" Role="FromRole_assoc_7598E3D00D12455AB83DB56AF384C58D"/><End EntitySet="ZC_EMPLOYEE" Role="ToRole_assoc_7598E3D00D12455AB83DB56AF384C58D"/></AssociationSet>
+				<AssociationSet Name="assoc_049D6D3CFA56C8AAC43028792D5BEBD3" Association="ZCALENDAR_SRV_01.assoc_049D6D3CFA56C8AAC43028792D5BEBD3"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_EMPLOYEE" Role="FromRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"/><End EntitySet="ZC_APPOINTMENT" Role="ToRole_assoc_049D6D3CFA56C8AAC43028792D5BEBD3"/></AssociationSet>
+				<AssociationSet Name="assoc_1B278F01ADA80A7BF6465E8D9569DBC3" Association="ZCALENDAR_SRV_01.assoc_1B278F01ADA80A7BF6465E8D9569DBC3"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZC_EMPLOYEE" Role="FromRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"/><End EntitySet="ZC_IMAGE" Role="ToRole_assoc_1B278F01ADA80A7BF6465E8D9569DBC3"/></AssociationSet>
+			</EntityContainer>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_APPOINTMENTType/user_id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Consumption view for employees"/><PropertyValue Property="CollectionPath" String="ZC_EMPLOYEE"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="user_id"/><PropertyValue Property="ValueListProperty" String="user_id"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_IMAGEType/user_id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Consumption view for employees"/><PropertyValue Property="CollectionPath" String="ZC_EMPLOYEE"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="user_id"/><PropertyValue Property="ValueListProperty" String="user_id"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_PROJECTType/user_id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Consumption view for employees"/><PropertyValue Property="CollectionPath" String="ZC_EMPLOYEE"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="user_id"/><PropertyValue Property="ValueListProperty" String="user_id"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_PROJECTType/appointment_id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Consumption view for appointments"/><PropertyValue Property="CollectionPath" String="ZC_APPOINTMENT"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="appointment_id"/><PropertyValue Property="ValueListProperty" String="appointment_id"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZCALENDAR_SRV_01_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_APPOINTMENTType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>appointment_id</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_EMPLOYEEType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>user_id</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_IMAGEType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>zphoto_id</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZCALENDAR_SRV_01.ZC_PROJECTType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>project_id</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations><atom:link rel="self"
+				href="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/sap/ZCALENDAR_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-potddzgwyw.dispatcher.hana.ondemand.com/destinations/D78_700/sap/opu/odata/sap/ZCALENDAR_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
