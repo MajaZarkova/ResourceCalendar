@@ -404,6 +404,7 @@ sap.ui.define([
 			},
 
 			_setCreateWithContextAppointmentDialogContent: function () {
+				debugger;
 				var aPeople = this.getView().getModel().getProperty('/employees/'),
 					oSelectedIntervalStart = this.oClickEventParameters.startDate,
 					oStartDate = this.byId("startDate"),
