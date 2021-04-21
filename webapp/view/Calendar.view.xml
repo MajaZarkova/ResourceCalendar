@@ -1,0 +1,38 @@
+<mvc:View controllerName="home.kpmg.ResourceCalendar.controller.Calendar" xmlns:mvc="sap.ui.core.mvc" xmlns:unified="sap.ui.unified"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" height="100%">
+	<l:ResponsiveSplitter defaultPane="default">
+		<l:PaneContainer>
+			<l:SplitPane requiredParentWidth="400" id="default">
+				<VBox class="sapUiSmallMargin">
+					<PlanningCalendar id="PC1" startDate="{path: '/startDate'}" rows="{path: '/employees'}" appointmentsVisualization="Filled"
+						appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" intervalSelect="handleAppointmentAddWithContext">
+						<toolbarContent>
+							<Title text="Resource Planner" titleStyle="H4"/>
+							<Button id="addButton" icon="sap-icon://add" press="handleAppointmentCreate" tooltip="Add" ariaHasPopup="Dialog"/>
+						</toolbarContent>
+						<rows>
+							<PlanningCalendarRow icon="sap-icon://employee" title="{name}" text="{role}"
+								appointments="{path : 'appointments', templateShareable: false}" intervalHeaders="{path: 'headers', templateShareable: false}">
+								<appointments>
+									<unified:CalendarAppointment startDate="{Start_Date}" endDate="{End_Date}" icon="sap-icon://sap-ui5" title="{title}" text="{info}"
+										type="{type}" tentative="{tentative}"></unified:CalendarAppointment>
+								</appointments>
+								<intervalHeaders>
+									<unified:CalendarAppointment startDate="{}" endDate="{}" icon="sap-icon://sap-ui5" title="{}" type="{}"></unified:CalendarAppointment>
+								</intervalHeaders>
+							</PlanningCalendarRow>
+						</rows>
+					</PlanningCalendar>
+				</VBox>
+			</l:SplitPane>
+			<l:SplitPane requiredParentWidth="800">
+				<Page title="Very cool responsive container on the right side for active projects and tasks"></Page>
+			</l:SplitPane>
+		</l:PaneContainer>
+	</l:ResponsiveSplitter>
+	<Page title="Very cool footer bar for data and messages">
+		<footer>
+			
+		</footer>
+	</Page>
+</mvc:View>
